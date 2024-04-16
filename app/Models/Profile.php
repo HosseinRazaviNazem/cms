@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Profile extends Model
 {
     use HasFactory;
+    public function Customer()
+    {
+        return $this->belongsTo(Customer::class);
+    }
 }
