@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Cart extends Model
 {
     use HasFactory;
+
+    public function Customer()
+    {
+        return $this->belongsTo(Customer::class);
+    }
+
+
 }
