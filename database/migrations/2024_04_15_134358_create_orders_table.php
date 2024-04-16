@@ -13,11 +13,9 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-
+            $table->enum('status', [ 'processing', 'completed', 'cancelled'])->default('processing');
             $table->foreignId('customer_id')->constrained()->onDelete('cascade');
             $table->foreignId('order_product_id')->constrained()->onDelete('cascade');
-            $table->enum('status', [ 'processing', 'completed', 'cancelled'])->default('processing');
-
             $table->timestamps();
         });
     }
