@@ -10,6 +10,13 @@ class Product extends Model
     use HasFactory;
     //product has many to customer
 
+    protected $fillable = [
+        'name',
+        'description',
+        'price',
+        'quantity',
+    ];
+
     public function carts()
     {
         return $this->belongsToMany(Cart::class,'cart');

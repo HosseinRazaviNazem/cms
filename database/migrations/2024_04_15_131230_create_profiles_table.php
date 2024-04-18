@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('avatar')->nullable();
             $table->string('city',50);
             $table->string('state');
-            $table->enum('status')->default('pending'); // fix pend reject verified
+            $table->enum('status', ['PENDING', 'VERIFIED', 'REJECTED'])->default('PENDING');
             $table->timestamps();
         });
     }

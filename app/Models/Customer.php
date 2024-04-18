@@ -9,6 +9,13 @@ class Customer extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'phone',
+        'email',
+        'username',
+        'password',
+    ];
+
     public function profile()
     {
         return $this->hasOne(Profile::class);
