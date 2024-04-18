@@ -13,20 +13,16 @@ return new class extends Migration
     {
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
-
             $table->string('first_name','100');
             $table->string('last_name','100');
+            $table->foreignId('customer_id')->constrained()->onDelete('cascade');
             $table->string('address')->nullable();
-            $table->enum('gender', ['male', 'female', 'other'])->nullable();
+            $table->enum('gender', ['MALE', 'FEMALE', 'OTHER'])->nullable();
             $table->date('birthday')->nullable();
             $table->string('avatar')->nullable();
-            $table->string('city');
-            $table->string('state')->after('city');
-            $table->boolean('profile_status')->nullable();
-
-            $table->foreignId('Customer_id')->onDelete('cascade');
-
-
+            $table->string('city',50);
+            $table->string('state');
+            $table->enum('status')->default('pending'); // fix pend reject verified
             $table->timestamps();
         });
     }
