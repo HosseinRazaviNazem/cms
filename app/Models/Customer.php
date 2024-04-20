@@ -21,10 +21,10 @@ class Customer extends Model
         return $this->hasOne(Profile::class);
     }
 
-    public function carts()
+    public function products()
 
     {
-        return $this->hasMany(Cart::class);
+        return $this->belongsToMany(Product::class,'carts');
 
     }
 
