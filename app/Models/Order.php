@@ -16,13 +16,11 @@ class Order extends Model
     ];
 
 
-    public function customers()
-    {
 
-    }
 
-    public function orderProduct()
+    public function Products()
     {
+        return $this->belongsTomany(Product::class,'products');
 
     }
 }

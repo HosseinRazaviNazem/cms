@@ -17,15 +17,15 @@ class Product extends Model
         'quantity',
     ];
 
-    public function carts()
+    public function customers()
     {
-        return $this->belongsToMany(Cart::class,'cart');
+        return $this->belongsToMany(Customer::class,'carts');
 
     }
 
     public function order()
     {
-        return $this->hasMany(Order::class ,'order_id');
+        return $this->belongsToMany(Order::class ,'orders');
 
     }
 }
