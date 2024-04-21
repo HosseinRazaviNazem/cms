@@ -20,4 +20,24 @@ class CustomerController extends Controller
 
   }
 
+    public function destory($id)
+    {
+        try {
+            $customer = Customer::findOrFail($id);
+            $customer->delete();
+
+            return response()->json(['message' => 'Customer deleted successfully']);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Failed to delete customer.'], 500);
+        }
+
+  }
+
+    public function show($id)
+    {
+        $customer = Customer::findOrFail($id);
+
+        return response()->json(['data' => $customer]);
+    }
+
 }
