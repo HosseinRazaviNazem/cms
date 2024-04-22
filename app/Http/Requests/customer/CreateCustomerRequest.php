@@ -19,9 +19,9 @@ class CreateCustomerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'phone' => 'required|string|unique:users,phone|max:12',
-            'email' => 'required|email|unique:users,email',
-            'username' => 'required|string|unique:users,username|max:50',
+            'phone' => 'required|string|unique:customers,phone|max:12',
+            'email' => 'required|email|unique:customers,email',
+            'username' => 'required|string|unique:customers,username|max:50',
             'password' => 'required|string',
         ];
     }
