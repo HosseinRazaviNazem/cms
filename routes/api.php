@@ -9,6 +9,7 @@ Route::get('/user', function (Request $request) {
 
 Route::get('customers', [\App\Http\Controllers\customer\CustomerController::class, 'index']);
 Route::get('customers/{id}', [\App\Http\Controllers\customer\CustomerController::class, 'show']);
+Route::post('customers', [\App\Http\Controllers\customer\CustomerController::class, 'store']);
 Route::delete('customers/{id}', [\App\Http\Controllers\customer\CustomerController::class, 'destory']);
 Route::put('customers/{id}', [\App\Http\Controllers\customer\CustomerController::class, 'destory']);
 //Route::apiResource('customers', \App\Http\Controllers\customer\CustomerController::class);
