@@ -3,6 +3,7 @@
 namespace App\Http\Requests\customer;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Hash;
 
 class CreateCustomerRequest extends FormRequest
 {
@@ -22,7 +23,13 @@ class CreateCustomerRequest extends FormRequest
             'phone' => 'required|string|unique:customers,phone|max:12',
             'email' => 'required|email|unique:customers,email',
             'username' => 'required|string|unique:customers,username|max:50',
-            'password' => 'required|string',
+            'password' => 'required|string'
         ];
+    }
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'password' => Hash::make($this->input('password')),
+        ]);
     }
 }
