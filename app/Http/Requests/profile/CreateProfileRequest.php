@@ -9,7 +9,10 @@ class CreateProfileRequest extends FormRequest
     /**
      * Determine if the user is authorized to make this request.
      */
-
+//    public function authorize(): bool
+//    {
+//        return false;
+//    }
 
     /**
      * Get the validation rules that apply to the request.
@@ -20,17 +23,27 @@ class CreateProfileRequest extends FormRequest
     {
         return [
 
-            'first_name' => 'string|profiles,|max:100',
-            'last_name' => 'string|profiles,max100',
-            'customer_id' => 'required|',
-            'address' => 'string',
-           'gender' => 'enum',
-            'birthday' => 'date',
-            'avatar' => 'string',
-            'city' => 'string',
-            'state' => 'string',
-            'status' => 'enum',
+//            'first_name' => 'required|string|profiles,|max:100',
+//            'last_name' => 'required|string|profiles,max100',
+//            'customer_id' => 'required|profiles',
+//            'address' => 'required|string|profiles',
+//            'gender' => 'required|enum|profiles',
+//            'birthday' => 'required|date|profiles',
+//            'avatar' => 'required|string|profiles',
+//            'city' => 'required|string|profiles',
+//            'state' => 'required|string|profiles',
+//            'status' => 'enum|profiles',
 
+            'first_name' => 'required|string|max:100',
+            'last_name' => 'required|string|max:100',
+            'customer_id' => 'required|string|unique:profiles',
+            'address' => 'required|string',
+            'gender' => 'required|required|in:MALE,FEMALE,OTHER',
+            'birthday' => 'required|date',
+            'avatar' => 'required|string',
+            'city' => 'required|string',
+            'state' => 'required|string',
+            'status' => 'in:active,inactive',
         ];
     }
 }
