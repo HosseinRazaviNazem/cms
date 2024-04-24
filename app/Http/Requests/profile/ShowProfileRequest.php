@@ -20,16 +20,9 @@ class ShowProfileRequest extends FormRequest
     {
         return [
 
-//            'first_name' => 'string|profiles,|max:100',
-//            'last_name' => 'string|profiles,max100',
-            'customer_id' => 'required|customer',
-//            'address' => 'string|profiles',
-//           'gender' => 'enum|profiles',
-//            'birthday' => 'date|profiles',
-//            'avatar' => 'string|profiles',
-//            'city' => 'string|profiles',
-//            'state' => 'string|profiles',
-//            'status' => 'enum|profiles',
+
+            'customer_id' => 'required',
+
 
         ];
     }

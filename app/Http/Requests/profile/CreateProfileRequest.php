@@ -23,16 +23,7 @@ class CreateProfileRequest extends FormRequest
     {
         return [
 
-//            'first_name' => 'required|string|profiles,|max:100',
-//            'last_name' => 'required|string|profiles,max100',
-//            'customer_id' => 'required|profiles',
-//            'address' => 'required|string|profiles',
-//            'gender' => 'required|enum|profiles',
-//            'birthday' => 'required|date|profiles',
-//            'avatar' => 'required|string|profiles',
-//            'city' => 'required|string|profiles',
-//            'state' => 'required|string|profiles',
-//            'status' => 'enum|profiles',
+
 
             'first_name' => 'required|string|max:100',
             'last_name' => 'required|string|max:100',
@@ -43,7 +34,7 @@ class CreateProfileRequest extends FormRequest
             'avatar' => 'required|string',
             'city' => 'required|string',
             'state' => 'required|string',
-            'status' => 'in:active,inactive',
+
         ];
     }
 }
