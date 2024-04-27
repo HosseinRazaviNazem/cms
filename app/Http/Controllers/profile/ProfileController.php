@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\profile;
 
+use App\Exceptions\customer\CustomerNotFoundException;
+use App\Exceptions\UserNotFound;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\profile\CreateProfileRequest;
 use App\Http\Requests\profile\ShowProfileRequest;
@@ -44,9 +46,8 @@ class ProfileController extends Controller
             ->findOrFail($request->customer_id);
 
         $profile = $customer->profile;
-        if (empty($profile)) {
-             throw new \Exception('profile not found');
-        }
+            throw_if(! $profile, new CustomerNotFoundException());
+
 
         return response()->json(['data' => $profile]);
     }

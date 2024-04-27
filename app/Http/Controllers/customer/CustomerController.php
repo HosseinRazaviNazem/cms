@@ -5,6 +5,7 @@ namespace App\Http\Controllers\customer;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\customer\CreateCustomerRequest;
 use App\Http\Requests\customer\UpdateCustomerRequest;
+use App\Http\Resources\CustomerCollection;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 
@@ -17,7 +18,7 @@ class CustomerController extends Controller
 
         return response()->json([
             'success' => true,
-            'data' => $customers
+            'data' => new CustomerCollection($customers),
 
         ]);
     }
