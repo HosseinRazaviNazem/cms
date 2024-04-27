@@ -5,9 +5,9 @@ namespace App\Http\Controllers\customer;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\customer\CreateCustomerRequest;
 use App\Http\Requests\customer\UpdateCustomerRequest;
-use App\Http\Resources\CustomerCollection;
+use App\Http\Resources\customer\CustomerResource;
+use App\Http\Resources\customer\CustomerCollection;
 use App\Models\Customer;
-use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
@@ -34,7 +34,8 @@ class CustomerController extends Controller
     {
         $customer = Customer::findOrFail($id);
 
-        return response()->json(['data' => $customer]);
+//        return response()->json(['data' => $customer]);
+        return new CustomerResource($customer);
     }
 
 
