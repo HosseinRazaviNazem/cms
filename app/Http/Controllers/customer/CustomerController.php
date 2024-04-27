@@ -8,19 +8,20 @@ use App\Http\Requests\customer\UpdateCustomerRequest;
 use App\Http\Resources\customer\CustomerResource;
 use App\Http\Resources\customer\CustomerCollection;
 use App\Models\Customer;
+use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class CustomerController extends Controller
 {
 
     public function index()
     {
-        $customers = Customer::query()->paginate();
 
-        return response()->json([
-            'success' => true,
-            'data' => new CustomerCollection($customers),
-
-        ]);
+//        return response()->json([
+//            'success' => true,
+//            'data' => new CustomerCollection($customers),
+//
+//        ]);
+        return new CustomerCollection(Customer::paginate());
     }
 
     public function store(CreateCustomerRequest $request)
