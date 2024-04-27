@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Resources;
+namespace App\Http\Resources\customer;
 
 use App\Http\Requests\customer\CreateCustomerRequest;
 use Illuminate\Http\Request;
@@ -16,14 +16,10 @@ class CustomerCollection extends ResourceCollection
     public function toArray(CreateCustomerRequest|Request $request): array
     {
         return [
-            'data' => $this->collection->map(function ($customer) {
-                return [
-                    'id' => $customer->id,
-                    'phone' => $customer->phone, // Assuming you have a 'phone' attribute
-                    'email' => $customer->email,
-                    'username' => $customer->username,
-                ];
-            })
+            'message'=>'amirhossein',
+             'data'=> $this->collection,
+
+
         ];
     }
 }
