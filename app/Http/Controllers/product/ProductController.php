@@ -28,27 +28,32 @@ class ProductController extends Controller
     }
 
 
-    public function store(StoreProductRequest $request)54
+    public function store(StoreProductRequest $request)
     {
         $product = Product::create($request->validated());
 
         return response()->json(['message' => 'Product created successfully', 'data' => $product], 201);
     }
 
-    public function edit()
-    {
+//    public function edit()
+//    {
+//
+//    }
 
+//    public function update()
+//    {
+//
+//    }
+
+//    public function destory($id)
+//    {
+//        try {
+//            $product = Product::findOrFail($id);
+//            $product->delete();
+//
+//            return response()->json(['message' => 'product deleted successfully']);
+//        } catch (\Exception $e) {
+//            return response()->json(['error' => 'Failed to delete product.'], 500);
+//        }
+//
     }
-
-    public function update()
-    {
-
-    }
-
-    public function destroy()
-    {
-
-    }
-
-
-}
