@@ -4,6 +4,7 @@ namespace App\Http\Controllers\product;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\product\StoreProductRequest;
+use App\Http\Resources\product\ProductResource;
 use App\Http\Resources\product\ProdutCollection;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -22,11 +23,13 @@ class ProductController extends Controller
         ]);
     }
 
-    public function show()
+    public function show($id)
     {
+        $customer = Product::findOrFail($id);
 
+//        return response()->json(['data' => $customer]);
+        return new ProductResource($customer);
     }
-
 
     public function store(StoreProductRequest $request)
     {
@@ -35,15 +38,15 @@ class ProductController extends Controller
         return response()->json(['message' => 'Product created successfully', 'data' => $product], 201);
     }
 
-//    public function edit()
-//    {
-//
-//    }
+    public function edit()
+    {
 
-//    public function update()
-//    {
-//
-//    }
+    }
+
+    public function update()
+    {
+
+    }
 
 //    public function destory($id)
 //    {
