@@ -7,6 +7,10 @@ use App\Exceptions\UserNotFound;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\profile\CreateProfileRequest;
 use App\Http\Requests\profile\ShowProfileRequest;
+use App\Http\Resources\customer\CustomerCollection;
+use App\Http\Resources\customer\CustomerResource;
+use App\Http\Resources\profile\ProfileCollection;
+use App\Http\Resources\profile\ProfileResource;
 use App\Models\Customer;
 use App\Models\Profile;
 use Illuminate\Http\Request;
@@ -17,12 +21,14 @@ class ProfileController extends Controller
 
     public function index()
     {
-        $profiles = Profile::query()->paginate();
+//        $profiles = Profile::query()->paginate();
+//
+//        return response()->json([
+//            'success' => true,
+//            'data' => $profiles
+//        ]);
+        return new ProfileCollection(Profile::paginate());
 
-        return response()->json([
-            'success' => true,
-            'data' => $profiles
-        ]);
     }
 
     public function store(CreateProfileRequest $request)

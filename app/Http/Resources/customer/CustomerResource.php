@@ -21,6 +21,6 @@ class CustomerResource extends JsonResource
             'username' => $this->username,
         ];
 
-        return parent::toArray($request);
+//        return parent::toArray($request);
     }
 }

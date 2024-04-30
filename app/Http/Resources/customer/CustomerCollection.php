@@ -16,10 +16,8 @@ class CustomerCollection extends ResourceCollection
     public function toArray(CreateCustomerRequest|Request $request): array
     {
         return [
-            'message'=>'amirhossein',
+            'message'=>'all Customers',
              'data'=> $this->collection,
-
-
         ];
     }
 }
