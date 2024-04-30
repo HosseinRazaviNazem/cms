@@ -8,6 +8,7 @@ use App\Http\Requests\customer\UpdateCustomerRequest;
 use App\Http\Resources\customer\CustomerResource;
 use App\Http\Resources\customer\CustomerCollection;
 use App\Models\Customer;
+use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class CustomerController extends Controller
@@ -15,12 +16,6 @@ class CustomerController extends Controller
 
     public function index()
     {
-
-//        return response()->json([
-//            'success' => true,
-//            'data' => new CustomerCollection($customers),
-//
-//        ]);
         return new CustomerCollection(Customer::paginate());
     }
 
@@ -28,14 +23,15 @@ class CustomerController extends Controller
     {
         $customer = Customer::create($request->validated());
 
-        return response()->json(['message' => 'Customer created successfully', 'data' => $customer], 201);
+        return new CustomerResource($customer);
+
+//        return response()->json(['message' => 'Customer created successfully', 'data' => $customer], 201);
     }
 
     public function show($id)
     {
         $customer = Customer::findOrFail($id);
 
-//        return response()->json(['data' => $customer]);
         return new CustomerResource($customer);
     }
 
@@ -44,7 +40,8 @@ class CustomerController extends Controller
     {
         $customer->update($request->validated());
 
-        return response()->json(['message' => 'Customer updated successfully', 'data' => $customer]);
+        return new CustomerResource($customer);
+//        return response()->json(['message' => 'Customer updated successfully', 'data' => $customer]);
     }
 
     public function destory($id)

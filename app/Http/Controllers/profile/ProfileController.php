@@ -14,6 +14,7 @@ use App\Http\Resources\profile\ProfileResource;
 use App\Models\Customer;
 use App\Models\Profile;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\JsonResource;
 use mysql_xdevapi\Exception;
 
 class ProfileController extends Controller
@@ -34,15 +35,17 @@ class ProfileController extends Controller
     public function store(CreateProfileRequest $request)
     {
         $profile = Profile::create($request->validated());
+        return new ProfileResource($profile);
 
-        return response()->json(['message' => 'profile created successfully', 'data' => $profile], 201);
+//        return response()->json(['message' => 'profile created successfully', 'data' => $profile], 201);
     }
 
     public function update(CreateProfileRequest $request, Profile $profile)
     {
         $profile->update($request->validated());
 
-        return response()->json(['message' => 'Customer updated successfully', 'data' => $profile]);
+        return new ProfileResource($profile);
+//        return response()->json(['message' => 'Customer updated successfully', 'data' => $profile]);
     }
 
     public function me(ShowProfileRequest $request)
@@ -52,17 +55,17 @@ class ProfileController extends Controller
             ->findOrFail($request->customer_id);
 
         $profile = $customer->profile;
-            throw_if(! $profile, new CustomerNotFoundException());
+        throw_if(!$profile, new CustomerNotFoundException());
 
+        return new ProfileResource($profile);
 
-        return response()->json(['data' => $profile]);
+//        return response()->json(['data' => $profile]);
     }
 
 //    public function admin()
 //    {
 //
 //}
-
 
 
 }

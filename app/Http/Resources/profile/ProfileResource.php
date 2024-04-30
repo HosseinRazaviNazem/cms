@@ -26,6 +26,8 @@ class ProfileResource extends JsonResource
             'city' => $this->city,
             'state' => $this->state,
             'status' => $this->status,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
         ];
         return parent::toArray($request);
     }

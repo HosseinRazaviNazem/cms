@@ -19,6 +19,8 @@ class CustomerResource extends JsonResource
             'phone' => $this->phone, // Assuming you have a 'phone' attribute
             'email' => $this->email,
             'username' => $this->username,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
         ];
 
 //        return parent::toArray($request);
