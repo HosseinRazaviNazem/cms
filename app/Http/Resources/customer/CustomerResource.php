@@ -16,13 +16,11 @@ class CustomerResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'phone' => $this->phone, // Assuming you have a 'phone' attribute
+            'phone' => $this->phone,
             'email' => $this->email,
             'username' => $this->username,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];
-
-//        return parent::toArray($request);
     }
 }
