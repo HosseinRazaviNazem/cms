@@ -22,7 +22,7 @@ class CartController extends Controller
             $cartItem->save();
         } else {
             $cartItem = new cart();
-            $cartItem->user_id = $validatedData['customer_id'];
+            $cartItem->customer_id = $validatedData['customer_id'];
             $cartItem->product_id = $validatedData['product_id'];
             $cartItem->quantity = $validatedData['quantity'];
             $cartItem->save();
