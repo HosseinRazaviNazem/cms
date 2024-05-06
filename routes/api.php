@@ -28,5 +28,5 @@ Route::apiResource('product',\App\Http\Controllers\product\ProductController::cl
 
     Route::post('login', [\App\Http\Controllers\AuthController::class, 'login']);
     Route::post('register', [\App\Http\Controllers\AuthController::class, 'register']);
-
+Route::post('cart',[\App\Http\Controllers\cart\CartController::class, 'addItem']);
 

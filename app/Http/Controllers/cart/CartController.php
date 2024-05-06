@@ -11,26 +11,23 @@ class CartController extends Controller
 {
     public function addItem(CartRequest $request)
     {
+        $validatedData = $request->validated();
 
-
-        $cartItem = Cart::create($request->validated());
-        $cartItem = CartItem::where('user_id', $request->customer_id)
-            ->where('product_id', $request->product_id)
+        $cartItem = Cart::where('customer_id', $validatedData['customer_id'])
+            ->where('product_id', $validatedData['product_id'])
             ->first();
 
         if ($cartItem) {
-            // Update quantity
-            $cartItem->quantity += $request->quantity;
+            $cartItem->quantity += $validatedData['quantity'];
             $cartItem->save();
         } else {
-            // Add new item to cart
-            $cartItem = new CartItem();
-            $cartItem->user_id = $request->user_id;
-            $cartItem->product_id = $request->product_id;
-            $cartItem->quantity = $request->quantity;
+            $cartItem = new cart();
+            $cartItem->user_id = $validatedData['customer_id'];
+            $cartItem->product_id = $validatedData['product_id'];
+            $cartItem->quantity = $validatedData['quantity'];
             $cartItem->save();
         }
 
-        return response()->json(['message' => 'Item added to cart successfully']);
+        return response()->json(['message' => 'Item added to cart successfully'], 200);
     }
 }
