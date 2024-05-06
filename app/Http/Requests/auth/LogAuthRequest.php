@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\cart;
+namespace App\Http\Requests\auth;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CartRequest extends FormRequest
+class LogAuthRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,11 +22,8 @@ class CartRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'customer_id' => 'required',
-            'product_id' => 'required',
-            'quantity' => 'required|integer|min:1',
-
-
+            'email' => 'required|string|email',
+            'password' => 'required|string',
         ];
     }
 }
