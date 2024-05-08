@@ -18,9 +18,9 @@ class Product extends Model
         'image',
     ];
 
-    public function customers()
+    public function users()
     {
-        return $this->belongsToMany(Customer::class,'carts');
+        return $this->belongsToMany(User::class,'carts');
 
     }
 

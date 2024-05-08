@@ -3,44 +3,45 @@
 namespace App\Http\Controllers\customer;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\customer\CreateCustomerRequest;
-use App\Http\Requests\customer\UpdateCustomerRequest;
-use App\Http\Resources\customer\CustomerResource;
-use App\Http\Resources\customer\CustomerCollection;
+use App\Http\Requests\user\StoreUserRequest;
+use App\Http\Requests\user\UpdateUserRequest;
+use App\Http\Resources\user\UserResource;
+use App\Http\Resources\user\UserCollection;
 use App\Models\Customer;
+use App\Models\User;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class CustomerController extends Controller
+class UserController extends Controller
 {
 
     public function index()
     {
-        return new CustomerCollection(Customer::paginate());
+        return new UserCollection(Customer::paginate());
     }
 
-    public function store(CreateCustomerRequest $request)
+    public function store(StoreUserRequest $request)
     {
-        $customer = Customer::create($request->validated());
+        $user = User::create($request->validated());
 
-        return new CustomerResource($customer);
+        return new UserResource($user);
 
 //        return response()->json(['message' => 'Customer created successfully', 'data' => $customer], 201);
     }
 
     public function show($id)
     {
-        $customer = Customer::findOrFail($id);
+        $user = User::findOrFail($id);
 
-        return new CustomerResource($customer);
+        return new UserResource($user);
     }
 
 
-    public function update(UpdateCustomerRequest $request, Customer $customer)
+    public function update(UpdateUserRequest $request, User $user)
     {
-        $customer->update($request->validated());
+        $user->update($request->validated());
 
-        return new CustomerResource($customer);
+        return new UserResource($user);
 //        return response()->json(['message' => 'Customer updated successfully', 'data' => $customer]);
     }
 

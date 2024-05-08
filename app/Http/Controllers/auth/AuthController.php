@@ -30,10 +30,10 @@ class AuthController extends Controller
             ], 401);
         }
 
-        $user = Auth::user();
+        $user = Auth::Customer();
         return response()->json([
             'status' => 'success',
-            'user' => $user,
+            'customer' => $user,
             'authorisation' => [
                 'token' => $token,
                 'type' => 'bearer',

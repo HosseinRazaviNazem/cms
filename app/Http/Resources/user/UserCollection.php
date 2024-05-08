@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Http\Resources\customer;
+namespace App\Http\Resources\user;
 
-use App\Http\Requests\customer\CreateCustomerRequest;
+use App\Http\Requests\user\StoreUserRequest;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class CustomerCollection extends ResourceCollection
+class UserCollection extends ResourceCollection
 {
     /**
      * Transform the resource collection into an array.
      *
      * @return array<int|string, mixed>
      */
-    public function toArray(CreateCustomerRequest|Request $request): array
+    public function toArray(StoreUserRequest|Request $request): array
     {
         return [
             'message'=>'all Customers',

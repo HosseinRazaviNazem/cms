@@ -24,8 +24,8 @@ class Profile extends Model
 
 
 
-    public function customer()
+    public function user()
     {
-        return $this->belongsTo(customer::class);
+        return $this->belongsTo(User::class);
     }
 }
