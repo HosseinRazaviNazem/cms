@@ -6,8 +6,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
-Route::apiResource('admin/users',\App\Http\Controllers\customer\UserController::class);
-Route::apiResource('user/customers',\App\Http\Controllers\customer\UserController::class)->except('index');
+Route::apiResource('admin/users',\App\Http\Controllers\user\UserController::class);
+Route::apiResource('user',\App\Http\Controllers\user\UserController::class)->except('index');
 Route::post('customers/profiles/me',[\App\Http\Controllers\profile\ProfileController::class, 'me']);
 Route::apiResource('users/profile',\App\Http\Controllers\profile\ProfileController::class);
 //Route::post('customers/{customer_id}',[\App\Http\Controllers\profile\ProfileController::class, 'show']);
@@ -21,12 +21,12 @@ Route::apiResource('product',\App\Http\Controllers\product\ProductController::cl
 //    Route::post('refresh', 'refresh');
 //});
 
-    Route::group([ 'middleware' => 'auth:api'], function () {
-        Route::post('logout', [\App\Http\Controllers\AuthController::class, 'logout']);
-        Route::post('refresh', [\App\Http\Controllers\AuthController::class, 'refresh']);
-    });
-
-    Route::post('login', [\App\Http\Controllers\AuthController::class, 'login']);
-    Route::post('register', [\App\Http\Controllers\AuthController::class, 'register']);
+//    Route::group([ 'middleware' => 'auth:api'], function () {
+//        Route::post('logout', [\App\Http\Controllers\AuthController::class, 'logout']);
+//        Route::post('refresh', [\App\Http\Controllers\AuthController::class, 'refresh']);
+//    });
+//
+//    Route::post('login', [\App\Http\Controllers\AuthController::class, 'login']);
+//    Route::post('register', [\App\Http\Controllers\AuthController::class, 'register']);
 
 

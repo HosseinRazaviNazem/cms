@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\customer;
+namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\user\StoreUserRequest;
 use App\Http\Requests\user\UpdateUserRequest;
 use App\Http\Resources\user\UserResource;
 use App\Http\Resources\user\UserCollection;
-use App\Models\Customer;
 use App\Models\User;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Resources\Json\ResourceCollection;
@@ -17,7 +16,7 @@ class UserController extends Controller
 
     public function index()
     {
-        return new UserCollection(Customer::paginate());
+        return new UserCollection(User::paginate());
     }
 
     public function store(StoreUserRequest $request)
