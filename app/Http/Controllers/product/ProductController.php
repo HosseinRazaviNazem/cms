@@ -19,9 +19,9 @@ class ProductController extends Controller
 
     public function show($id)
     {
-        $customer = Product::findOrFail($id);
+        $user = Product::findOrFail($id);
 
-        return new ProductResource($customer);
+        return new ProductResource($user);
     }
 
     public function store(StoreProductRequest $request)

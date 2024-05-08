@@ -16,9 +16,9 @@ return new class extends Migration
             $table->integer('quantity');
             $table->decimal('orginal_price', 10, 2);
             $table->decimal('total_price', 10, 2);
-            $table->unsignedBigInteger('customer_id');
+            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('product_id');
-            $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->timestamps();
