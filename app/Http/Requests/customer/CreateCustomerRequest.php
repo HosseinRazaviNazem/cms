@@ -26,10 +26,5 @@ class CreateCustomerRequest extends FormRequest
             'password' => 'required|string'
         ];
     }
-    protected function prepareForValidation()
-    {
-        $this->merge([
-            'password' => Hash::make($this->input('password')),
-        ]);
-    }
+
 }
