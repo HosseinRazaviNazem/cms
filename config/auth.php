@@ -15,7 +15,7 @@ return [
 
     'defaults' => [
         'guard' => 'api',
-        'passwords' => 'customers',
+        'passwords' => 'users',
     ],
 
     /*
@@ -64,14 +64,14 @@ return [
     */
 
     'providers' => [
-        'customers' => [
+        'users' => [
             'driver' => 'eloquent',
-            'model' => env('AUTH_MODEL', \App\Models\user::class),
+            'model' => env('AUTH_MODEL', \App\Models\User::class),
         ],
 
-//         'customers' => [
+//         'users' => [
 //             'driver' => 'database',
-//             'table' => 'customers',
+//             'table' => 'users',
 //         ],
     ],
 
@@ -95,7 +95,7 @@ return [
     */
 
     'passwords' => [
-        'customers' => [
+        'users' => [
             'provider' => 'users',
             'table' => env('AUTH_PASSWORD_RESET_TOKEN_TABLE', 'password_reset_tokens'),
             'expire' => 60,

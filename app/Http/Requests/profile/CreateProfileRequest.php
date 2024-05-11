@@ -27,7 +27,7 @@ class CreateProfileRequest extends FormRequest
 
             'first_name' => 'required|string|max:100',
             'last_name' => 'required|string|max:100',
-            'customer_id' => 'required|string|unique:profiles',
+            'user_id' => 'required|string|unique:profiles',
             'address' => 'required|string',
             'gender' => 'required|required|in:MALE,FEMALE,OTHER',
             'birthday' => 'required|date',

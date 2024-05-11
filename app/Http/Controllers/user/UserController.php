@@ -47,12 +47,12 @@ class UserController extends Controller
     public function destory($id)
     {
         try {
-            $customer = Customer::findOrFail($id);
-            $customer->delete();
+            $user = User::findOrFail($id);
+            $user->delete();
 
             return response()->json(['message' => 'Customer deleted successfully']);
         } catch (\Exception $e) {
-            return response()->json(['error' => 'Failed to delete customer.'], 500);
+            return response()->json(['error' => 'Failed to delete user.'], 500);
         }
 
     }

@@ -21,7 +21,7 @@ class ShowProfileRequest extends FormRequest
         return [
 
 
-            'customer_id' => 'required',
+            'user_id' => 'required',
 
 
         ];

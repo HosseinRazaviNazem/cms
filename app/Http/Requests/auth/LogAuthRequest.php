@@ -22,7 +22,7 @@ class LogAuthRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => 'required|email|unique:customers,email',
+            'email' => 'required|email|unique:users,email',
             'password' => 'required|string'
         ];
     }

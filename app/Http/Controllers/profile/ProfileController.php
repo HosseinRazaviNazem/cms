@@ -13,6 +13,7 @@ use App\Http\Resources\profile\ProfileCollection;
 use App\Http\Resources\profile\ProfileResource;
 use App\Models\Customer;
 use App\Models\Profile;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use mysql_xdevapi\Exception;
@@ -50,11 +51,11 @@ class ProfileController extends Controller
 
     public function me(ShowProfileRequest $request)
     {
-        $customer = Customer::query()
+        $user = User::query()
             ->with(['profile'])
-            ->findOrFail($request->customer_id);
+            ->findOrFail($request->user_id);
 
-        $profile = $customer->profile;
+        $profile = $user->profile;
         throw_if(!$profile, new CustomerNotFoundException());
 
         return new ProfileResource($profile);

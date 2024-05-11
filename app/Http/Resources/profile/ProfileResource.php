@@ -18,7 +18,7 @@ class ProfileResource extends JsonResource
             'id' => $this->id,
             'first_name' => $this->first_name, // Assuming you have a 'phone' attribute
             'last_name' => $this->last_name,
-            'customer_id' => $this->customer_id,
+            'user_id' => $this->user_id,
             'address' => $this->address,
             'gender' => $this->gender,
             'birthday' => $this->birthday,
