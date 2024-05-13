@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Http\Requests\customer\StoreCustomerRequest;
+use App\Http\Requests\login\LoginRequest;
 use App\Http\Resources\customer\CustomerResource;
 use App\Models\Customer;
 use Illuminate\Http\Request;
@@ -11,17 +13,10 @@ use App\Models\User;
 
 class AuthController extends Controller
 {
-
-
-    public function login(Request $request)
+    public function login(LoginRequest $request)
     {
-        $request->validate([
-            'email' => 'required|string|email',
-            'password' => 'required|string',
-        ]);
-        $credentials = $request->only('email', 'password');
-
-        $token = Auth::attempt($credentials);
+        $credentials = $request->validated();
+        $token = Auth::guard('customers')->attempt($credentials);
         if (!$token) {
             return response()->json([
                 'status' => 'error',
@@ -29,7 +24,7 @@ class AuthController extends Controller
             ], 401);
         }
 
-        $user = Auth::user();
+        $user = Auth::guard('customers')->user();
         return response()->json([
             'status' => 'success',
             'user' => $user,
@@ -44,11 +39,19 @@ class AuthController extends Controller
     public function register(StoreCustomerRequest $request)
     {
         $customer = Customer::create($request->validated());
+        $token = Auth::guard('customers')->login($customer);
+        return response()->json([
+            'status' => 'success',
+            'message' => 'User created successfully',
+            'user' => $customer,
+            'authorisation' => [
+                'token' => $token,
+                'type' => 'bearer',
+            ]
+        ]);
 
-//    CustomerResource($customer);
-
-        return response()->json(['message' => 'Customer created successfully', 'data' => $customer], 201);
     }
+
     public function logout()
     {
         Auth::logout();
