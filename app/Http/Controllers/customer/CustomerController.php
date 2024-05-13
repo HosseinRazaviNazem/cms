@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\customer;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\customer\CreateCustomerRequest;
+use App\Http\Requests\customer\StoreCustomerRequest;
 use App\Http\Requests\customer\UpdateCustomerRequest;
 use App\Http\Resources\customer\CustomerResource;
 use App\Http\Resources\customer\CustomerCollection;
@@ -19,7 +19,7 @@ class CustomerController extends Controller
         return new CustomerCollection(Customer::paginate());
     }
 
-    public function store(CreateCustomerRequest $request)
+    public function store(StoreCustomerRequest $request)
     {
         $customer = Customer::create($request->validated());
 

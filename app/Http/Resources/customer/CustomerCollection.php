@@ -2,7 +2,7 @@
 
 namespace App\Http\Resources\customer;
 
-use App\Http\Requests\customer\CreateCustomerRequest;
+use App\Http\Requests\customer\StoreCustomerRequest;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
@@ -13,7 +13,7 @@ class CustomerCollection extends ResourceCollection
      *
      * @return array<int|string, mixed>
      */
-    public function toArray(CreateCustomerRequest|Request $request): array
+    public function toArray(StoreCustomerRequest|Request $request): array
     {
         return [
             'message'=>'all Customers',

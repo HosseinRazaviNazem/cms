@@ -5,7 +5,7 @@ namespace App\Http\Controllers\profile;
 use App\Exceptions\customer\CustomerNotFoundException;
 use App\Exceptions\UserNotFound;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\profile\CreateProfileRequest;
+use App\Http\Requests\profile\StoreProfileRequest;
 use App\Http\Requests\profile\ShowProfileRequest;
 use App\Http\Resources\customer\CustomerCollection;
 use App\Http\Resources\customer\CustomerResource;
@@ -32,7 +32,7 @@ class ProfileController extends Controller
 
     }
 
-    public function store(CreateProfileRequest $request)
+    public function store(StoreProfileRequest $request)
     {
         $profile = Profile::create($request->validated());
         return new ProfileResource($profile);
@@ -40,7 +40,7 @@ class ProfileController extends Controller
 //        return response()->json(['message' => 'profile created successfully', 'data' => $profile], 201);
     }
 
-    public function update(CreateProfileRequest $request, Profile $profile)
+    public function update(StoreProfileRequest $request, Profile $profile)
     {
         $profile->update($request->validated());
 

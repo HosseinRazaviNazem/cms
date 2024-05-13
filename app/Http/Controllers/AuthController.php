@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Http\Requests\customer\CreateCustomerRequest;
+use App\Http\Requests\customer\StoreCustomerRequest;
 use App\Http\Resources\customer\CustomerResource;
 use App\Models\Customer;
 use Illuminate\Http\Request;
@@ -41,7 +41,7 @@ class AuthController extends Controller
 
     }
 
-    public function register(CreateCustomerRequest $request)
+    public function register(StoreCustomerRequest $request)
     {
         $customer = Customer::create($request->validated());
 
