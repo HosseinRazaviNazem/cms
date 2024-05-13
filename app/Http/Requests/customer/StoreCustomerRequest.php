@@ -5,7 +5,7 @@ namespace App\Http\Requests\customer;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Hash;
 
-class CreateCustomerRequest extends FormRequest
+class StoreCustomerRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -20,16 +20,12 @@ class CreateCustomerRequest extends FormRequest
     public function rules(): array
     {
         return [
+
             'phone' => 'required|string|unique:customers,phone|max:12',
-            'email' => 'required|email|unique:customers,email',
+            'email' => 'required|email|unique:customers|max:255|email',
             'username' => 'required|string|unique:customers,username|max:50',
-            'password' => 'required|string'
+            'password' => 'required|string|min:6'
         ];
     }
-    protected function prepareForValidation()
-    {
-        $this->merge([
-            'password' => Hash::make($this->input('password')),
-        ]);
-    }
+
 }
