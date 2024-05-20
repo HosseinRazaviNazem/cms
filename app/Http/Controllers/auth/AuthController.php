@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Requests\customer\StoreCustomerRequest;
 use App\Http\Requests\login\LoginRequest;
 use App\Http\Requests\product\StoreProductRequest;
 use App\Models\Customer;
@@ -43,7 +44,7 @@ class AuthController extends Controller
 
     }
 
-    public function register(StoreProductRequest $request){
+    public function register(StoreCustomerRequest $request){
 
         $customer = Customer::create($request->validated());
 
