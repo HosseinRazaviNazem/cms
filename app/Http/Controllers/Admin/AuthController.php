@@ -14,7 +14,7 @@ class AuthController extends Controller
     {
         $admin = $request->validated();
 
-        $token = Auth::attempt($admin);
+        $token = $this->getGuard()->attempt($admin);
         if (! $token) {
             return response()->json([
                 'status' => 'error',
@@ -22,7 +22,7 @@ class AuthController extends Controller
             ], 401);
         }
 
-        $user = Auth::user();
+        $user = $this->getGuard()->user();
 
         return response()->json([
             'status' => 'success',
@@ -38,7 +38,7 @@ class AuthController extends Controller
     {
         $admin= Admin::create($request->validated());
 
-        $token = Auth::login($admin);
+        $token = $this->getGuard()->login($admin);
 
         return response()->json([
             'status' => 'success',
@@ -52,7 +52,7 @@ class AuthController extends Controller
     }
     public function logout()
     {
-        Auth::logout();
+        $this->getGuard()->logout();
 
         return response()->json([
             'status' => 'success',
@@ -63,5 +63,13 @@ class AuthController extends Controller
     public function refresh()
     {
         //
+    }
+
+    /**
+     * @return \Illuminate\Contracts\Auth\Guard|\Illuminate\Contracts\Auth\StatefulGuard
+     */
+    private function getGuard()
+    {
+        return Auth::guard('admins');
     }
 }

@@ -14,7 +14,7 @@ class AuthController extends Controller
     {
         $customer = $request->validated();
 
-        $token = Auth::attempt($customer);
+        $token = $this->getGuard()->attempt($customer);
         if (! $token) {
             return response()->json([
                 'status' => 'error',
@@ -22,7 +22,7 @@ class AuthController extends Controller
             ], 401);
         }
 
-        $user = Auth::user();
+        $user = $this->getGuard()->user();
 
         return response()->json([
             'status' => 'success',
@@ -38,7 +38,7 @@ class AuthController extends Controller
     {
         $customer = Customer::create($request->validated());
 
-        $token = Auth::login($customer);
+        $token = $this->getGuard()->login($customer);
 
         return response()->json([
             'status' => 'success',
@@ -53,7 +53,7 @@ class AuthController extends Controller
 
     public function logout()
     {
-        Auth::logout();
+        $this->getGuard()->logout();
 
         return response()->json([
             'status' => 'success',
@@ -65,11 +65,20 @@ class AuthController extends Controller
 //    {
 //        return response()->json([
 //            'status' => 'success',
-//            'user' => Auth::user(),
+//            'user' => $this->>$this->getGuard()->user(),
 //            'authorisation' => [
-//                'token' => Auth::refresh(),
+//                'token' => $this->>$this->getGuard()->refresh(),
 //                'type' => 'bearer',
 //            ],
 //        ]);
 //    }
+
+
+    /**
+     * @return \Illuminate\Contracts\Auth\Guard|\Illuminate\Contracts\Auth\StatefulGuard
+     */
+    private function getGuard()
+    {
+        return Auth::guard('customers');
+    }
 }
