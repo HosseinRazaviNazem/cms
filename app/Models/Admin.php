@@ -1,13 +1,12 @@
 <?php
 
 namespace App\Models;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject;
 
 
-class Admin extends Model //Authenticatable implements JWTSubject
+class Admin extends  Authenticatable implements JWTSubject
 {
     use HasFactory;
 
@@ -33,11 +32,6 @@ class Admin extends Model //Authenticatable implements JWTSubject
 }
 
 
-    /**
-     * Return a key value array, containing any custom claims to be added to the JWT.
-     *
-     * @return array
-     */
     public function getJWTCustomClaims()
 {
     return [];
