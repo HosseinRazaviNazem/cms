@@ -20,13 +20,13 @@ class Product extends Model
 
     public function customers()
     {
-        return $this->belongsToMany(Customer::class,'carts');
+        return $this->belongsToMany(Customer::class, 'carts');
 
     }
 
     public function order()
     {
-        return $this->belongsToMany(Order::class ,'orders');
+        return $this->belongsToMany(Order::class, 'orders');
 
     }
 }

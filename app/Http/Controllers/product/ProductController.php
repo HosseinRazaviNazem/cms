@@ -7,11 +7,9 @@ use App\Http\Requests\product\StoreProductRequest;
 use App\Http\Resources\product\ProductResource;
 use App\Http\Resources\product\ProdutCollection;
 use App\Models\Product;
-use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-
     public function index()
     {
         return new ProdutCollection(Product::paginate());
@@ -30,7 +28,6 @@ class ProductController extends Controller
 
         return new ProductResource($product);
 
-
     }
 
     public function update(StoreProductRequest $request, Product $product)
@@ -39,7 +36,7 @@ class ProductController extends Controller
 
         return new ProductResource($product);
 
-//        return response()->json(['message' => 'Customer updated successfully', 'data' => $customer]);
+        //        return response()->json(['message' => 'Customer updated successfully', 'data' => $customer]);
     }
 
     public function destory($id)

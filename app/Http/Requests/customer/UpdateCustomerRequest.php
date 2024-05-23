@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests\customer;
 
-use App\Models\Customer;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Hash;
 
@@ -11,10 +10,10 @@ class UpdateCustomerRequest extends FormRequest
     /**
      * Determine if the user is authorized to make this request.
      */
-//    public function authorize(): bool
-//    {
-//        return false;
-//    }
+    //    public function authorize(): bool
+    //    {
+    //        return false;
+    //    }
 
     /**
      * Get the validation rules that apply to the request.
@@ -37,6 +36,4 @@ class UpdateCustomerRequest extends FormRequest
             'password' => Hash::make($this->input('password')),
         ]);
     }
-
-
 }

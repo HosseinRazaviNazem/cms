@@ -22,8 +22,6 @@ class Profile extends Model
         'status',
     ];
 
-
-
     public function customer()
     {
         return $this->belongsTo(customer::class);

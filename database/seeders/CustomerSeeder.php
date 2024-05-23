@@ -3,9 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\Customer;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
+use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
 class CustomerSeeder extends Seeder
@@ -23,7 +22,6 @@ class CustomerSeeder extends Seeder
                 'email' => $faker->unique()->safeEmail,
                 'username' => $faker->name,
                 'password' => Hash::make($faker->password),
-
 
             ]);
         }

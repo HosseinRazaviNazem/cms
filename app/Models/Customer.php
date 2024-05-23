@@ -3,13 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject;
 
-
-
-class Customer extends  Authenticatable implements JWTSubject
+class Customer extends Authenticatable implements JWTSubject
 {
     use HasFactory;
 
@@ -28,9 +25,8 @@ class Customer extends  Authenticatable implements JWTSubject
     }
 
     public function products()
-
     {
-        return $this->belongsToMany(Product::class,'carts');
+        return $this->belongsToMany(Product::class, 'carts');
 
     }
 
@@ -38,6 +34,7 @@ class Customer extends  Authenticatable implements JWTSubject
     {
 
     }
+
     protected function casts(): array
     {
         return [
@@ -46,6 +43,7 @@ class Customer extends  Authenticatable implements JWTSubject
         ];
 
     }
+
     public function getJWTIdentifier()
     {
         return $this->getKey();
@@ -60,7 +58,4 @@ class Customer extends  Authenticatable implements JWTSubject
     {
         return [];
     }
-
-
-
 }

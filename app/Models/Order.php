@@ -15,12 +15,9 @@ class Order extends Model
         'order_product_id',
     ];
 
-
-
-
     public function Products()
     {
-        return $this->belongsTomany(Product::class,'products');
+        return $this->belongsTomany(Product::class, 'products');
 
     }
 }
