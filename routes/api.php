@@ -36,3 +36,4 @@ Route::group(['as' => 'admin.', 'prefix' => 'admins'], function () {
         Route::post('logout', [Admin\AuthController::class, 'logout']);
         Route::post('refresh', [Admin\AuthController::class, 'refresh']);
 });
+asa
