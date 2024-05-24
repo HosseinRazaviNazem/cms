@@ -3,28 +3,33 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\admin\LoginRequest;
-use App\Http\Requests\admin\RegisterRequest;
-use App\Models\Customer;
+use App\Http\Requests\Admin\LoginRequest;
+use App\Http\Requests\Admin\RegisterRequest;
+use App\Models\Admin;
+
 use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    public function login(LoginRequest $request)
+    public function login( LoginRequest $request)
     {
         $admin = $request->validated();
 
-        $token = Auth::attempt($admin);
+        $token = $this->getGuard()->attempt($admin);
+
         if (! $token) {
             return response()->json([
                 'status' => 'error',
                 'message' => 'Unauthorized',
             ], 401);
         }
-        $user = Auth::user();
+
+        $user = $this->getGuard()->user();
+
         return response()->json([
             'status' => 'success',
-            'customer' => $user,
+            'admin' => $user,
+
             'authorisation' => [
                 'token' => $token,
                 'type' => 'bearer',
@@ -34,11 +39,10 @@ class AuthController extends Controller
 
     public function register(RegisterRequest $request)
     {
-        //
         $admin= Admin::create($request->validated());
 
-        $token = Auth::login($admin);
-
+        $token = $this->getGuard()->login($admin);
+      
         return response()->json([
             'status' => 'success',
             'message' => 'Customer created successfully',
@@ -49,11 +53,9 @@ class AuthController extends Controller
             ],
         ]);
     }
-
     public function logout()
     {
-        Auth::logout();
-
+        $this->getGuard()->logout();
         return response()->json([
             'status' => 'success',
             'message' => 'Successfully logged out',
@@ -71,5 +73,13 @@ class AuthController extends Controller
                 'type' => 'bearer',
             ],
         ]);
+    }
+
+    /**
+     * @return \Illuminate\Contracts\Auth\Guard|\Illuminate\Contracts\Auth\StatefulGuard
+     */
+    private function getGuard()
+    {
+        return Auth::guard('admins');
     }
 }
