@@ -4,7 +4,6 @@ use App\Http\Controllers\Customer;
 use App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin;
 
 
 //Route::get('/user', function (Request $request) {
