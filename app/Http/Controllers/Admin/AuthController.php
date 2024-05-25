@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\admin\LoginRequest;
 use App\Http\Requests\admin\RegisterRequest;
+use App\Models\Admin;
 use App\Models\Customer;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,8 +14,8 @@ class AuthController extends Controller
     public function login(LoginRequest $request)
     {
         $admin = $request->validated();
+        $token = $this->getGuard()->attempt($admin);
 
-        $token = Auth::attempt($admin);
         if (! $token) {
             return response()->json([
                 'status' => 'error',
@@ -37,12 +38,12 @@ class AuthController extends Controller
         //
         $admin= Admin::create($request->validated());
 
-        $token = Auth::login($admin);
+        $token =$this->getGuard()->login($admin);
 
         return response()->json([
             'status' => 'success',
-            'message' => 'Customer created successfully',
-            'customer' => $admin,
+            'message' => 'admin created successfully',
+            'admin' => $admin,
             'authorisation' => [
                 'token' => $token,
                 'type' => 'bearer',
@@ -52,24 +53,27 @@ class AuthController extends Controller
 
     public function logout()
     {
-        Auth::logout();
+       $this->getGuard()->logout();
 
         return response()->json([
             'status' => 'success',
             'message' => 'Successfully logged out',
         ]);
     }
-
     public function refresh()
     {
-        //
         return response()->json([
             'status' => 'success',
-            'user' => Auth::user(),
+            'user' => $this->$this->getGuard()->user(),
             'authorisation' => [
-                'token' => Auth::refresh(),
+                'token' => $this->$this->getGuard()->refresh(),
                 'type' => 'bearer',
             ],
         ]);
+    }
+
+    private function getGuard()
+    {
+        return Auth::guard('admins');
     }
 }

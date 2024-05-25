@@ -14,7 +14,7 @@ class AuthController extends Controller
     {
         $customer = $request->validated();
 
-        $token = Auth::attempt($customer);
+        $token = $this->getGuard()->attempt($customer);
         if (! $token) {
             return response()->json([
                 'status' => 'error',
@@ -38,7 +38,8 @@ class AuthController extends Controller
     {
         $customer = Customer::create($request->validated());
 
-        $token = Auth::login($customer);
+    $token =$this->getGuard()->login($customer);
+
 
         return response()->json([
             'status' => 'success',
@@ -72,4 +73,10 @@ class AuthController extends Controller
             ],
         ]);
     }
+    private function getGuard()
+    {
+        return Auth::guard('customers');
+    }
+
 }
+
