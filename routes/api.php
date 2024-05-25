@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Customer;
 use App\Http\Controllers\Admin;
+use App\Http\Controllers\Cart\CartController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -29,8 +30,14 @@ Route::group(['as' => 'customer.', 'prefix' => 'customers'], function () {
     Route::post('register', [Customer\AuthController::class, 'register']);
     Route::post('logout', [Customer\AuthController::class, 'logout']);
     Route::post('refresh', [Customer\AuthController::class, 'refresh']);
+
 });
 
+Route::group(['as' => 'cart.', 'prefix' => 'cart'], function () {
+    Route::post('add', [CartController::class, 'addItem']);
+//    Route::post('delete', [CartController::class, 'addItem']);
+//    Route::post('update', [CartController::class, 'addItem']);
+});
 Route::group(['as' => 'admin.', 'prefix' => 'admins'], function () {
         Route::post('login', [Admin\AuthController::class, 'login']);
         Route::post('register', [Admin\AuthController::class, 'register']);

@@ -9,10 +9,7 @@ class CartRequest extends FormRequest
     /**
      * Determine if the user is authorized to make this request.
      */
-    public function authorize(): bool
-    {
-        return false;
-    }
+
 
     /**
      * Get the validation rules that apply to the request.
@@ -23,7 +20,7 @@ class CartRequest extends FormRequest
     {
         return [
             'quantity' => 'required',
-            'customer-id' => 'required',
+            'customer_id' => 'required',
             'product_id' => 'required',
         ];
     }
