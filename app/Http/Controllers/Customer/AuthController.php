@@ -61,17 +61,17 @@ class AuthController extends Controller
         ]);
     }
 
-//    public function refresh()
-//    {
-//        return response()->json([
-//            'status' => 'success',
-//            'user' => $this->>$this->getGuard()->user(),
-//            'authorisation' => [
-//                'token' => $this->>$this->getGuard()->refresh(),
-//                'type' => 'bearer',
-//            ],
-//        ]);
-//    }
+    public function refresh()
+    {
+        return response()->json([
+            'status' => 'success',
+            'user' => $this->$this->getGuard()->user(),
+            'authorisation' => [
+                'token' => $this->$this->getGuard()->refresh(),
+                'type' => 'bearer',
+            ],
+        ]);
+    }
 
 
     /**
