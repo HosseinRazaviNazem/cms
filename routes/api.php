@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Customer;
+use App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin;
@@ -37,3 +38,4 @@ Route::group(['as' => 'admin.', 'prefix' => 'admins'], function () {
         Route::post('logout', [Admin\AuthController::class, 'logout']);
         Route::post('refresh', [Admin\AuthController::class, 'refresh']);
 });
+

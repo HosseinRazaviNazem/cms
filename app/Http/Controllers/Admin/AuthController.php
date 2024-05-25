@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\LoginRequest;
 use App\Http\Requests\Admin\RegisterRequest;
 use App\Models\Admin;
+
 use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
@@ -15,6 +16,7 @@ class AuthController extends Controller
         $admin = $request->validated();
 
         $token = $this->getGuard()->attempt($admin);
+
         if (! $token) {
             return response()->json([
                 'status' => 'error',
@@ -27,6 +29,7 @@ class AuthController extends Controller
         return response()->json([
             'status' => 'success',
             'admin' => $user,
+
             'authorisation' => [
                 'token' => $token,
                 'type' => 'bearer',
@@ -39,7 +42,7 @@ class AuthController extends Controller
         $admin= Admin::create($request->validated());
 
         $token = $this->getGuard()->login($admin);
-
+      
         return response()->json([
             'status' => 'success',
             'message' => ' admin created successfully',
@@ -53,7 +56,6 @@ class AuthController extends Controller
     public function logout()
     {
         $this->getGuard()->logout();
-
         return response()->json([
             'status' => 'success',
             'message' => 'Successfully logged out',
@@ -62,11 +64,14 @@ class AuthController extends Controller
 
     public function refresh()
     {
+
         return response()->json([
             'status' => 'success',
             'user' => $this->$this->getGuard()->user(),
             'authorisation' => [
                 'token' => $this->$this->getGuard()->refresh(),
+
+
                 'type' => 'bearer',
             ],
         ]);
