@@ -42,7 +42,7 @@ class AuthController extends Controller
 
         return response()->json([
             'status' => 'success',
-            'message' => 'Customer created successfully',
+            'message' => ' admin created successfully',
             'customer' => $admin,
             'authorisation' => [
                 'token' => $token,

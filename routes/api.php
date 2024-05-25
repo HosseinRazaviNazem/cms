@@ -3,6 +3,8 @@
 use App\Http\Controllers\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin;
+
 
 //Route::get('/user', function (Request $request) {
 //    return $request->user();
@@ -30,8 +32,8 @@ Route::group(['as' => 'customer.', 'prefix' => 'customers'], function () {
 });
 
 Route::group(['as' => 'admin.', 'prefix' => 'admins'], function () {
-    //    Route::post('login', [Admin\AuthController::class, 'login']);
-    //    Route::post('register', [Admin\AuthController::class, 'register']);
-    //    Route::post('logout', [Admin\AuthController::class, 'logout']);
-    //    Route::post('refresh', [Admin\AuthController::class, 'refresh']);
+        Route::post('login', [Admin\AuthController::class, 'login']);
+        Route::post('register', [Admin\AuthController::class, 'register']);
+        Route::post('logout', [Admin\AuthController::class, 'logout']);
+        Route::post('refresh', [Admin\AuthController::class, 'refresh']);
 });
