@@ -33,9 +33,7 @@ class CartController extends Controller
             $cartItem->save();
         } else {
             Cart::create($validatedData);
-
         }
         return new CartResource($cartItem);
-
     }
 }
