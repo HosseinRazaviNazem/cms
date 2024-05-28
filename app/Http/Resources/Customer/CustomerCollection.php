@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Resources\customer;
+namespace App\Http\Resources\Customer;
 
 use App\Http\Requests\Customer\RegisterRequest;
 use Illuminate\Http\Request;

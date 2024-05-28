@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\profile;
+namespace App\Http\Controllers\Customer\profile;
 
 use App\Exceptions\customer\CustomerNotFoundException;
 use App\Http\Controllers\Controller;

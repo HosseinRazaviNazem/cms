@@ -1,14 +1,18 @@
 <?php
 
-namespace App\Http\Requests\profile;
+namespace App\Http\Requests\Customer\profile;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ShowProfileRequest extends FormRequest
+class UpdateProfileRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
+    public function authorize(): bool
+    {
+        return false;
+    }
 
     /**
      * Get the validation rules that apply to the request.
@@ -18,9 +22,7 @@ class ShowProfileRequest extends FormRequest
     public function rules(): array
     {
         return [
-
-            'customer_id' => 'required',
-
+            //
         ];
     }
 }
