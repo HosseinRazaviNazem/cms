@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\cart;
+namespace App\Http\Controllers\Customer\cart;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\cart\CartRequest;

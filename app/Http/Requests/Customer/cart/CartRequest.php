@@ -1,18 +1,15 @@
 <?php
 
-namespace App\Http\Requests\profile;
+namespace App\Http\Requests\Customer\cart;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateProfileRequest extends FormRequest
+class CartRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
-    public function authorize(): bool
-    {
-        return false;
-    }
+
 
     /**
      * Get the validation rules that apply to the request.
@@ -22,7 +19,9 @@ class UpdateProfileRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'quantity' => 'required',
+            'customer_id' => 'required',
+            'product_id' => 'required',
         ];
     }
 }

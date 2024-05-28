@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Resources\cart;
+namespace App\Http\Resources\Customer\cart;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
