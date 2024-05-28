@@ -23,12 +23,15 @@ use Illuminate\Support\Facades\Route;
 ////    Route::post('logout', 'logout');
 ////    Route::post('refresh', 'refresh');
 ////});
-
+//Customer.....................................................
 Route::group(['as' => 'customer.', 'prefix' => 'customers'], function () {
     Route::post('login', [Customer\Auth\AuthController::class, 'login']);
     Route::post('register', [Customer\Auth\AuthController::class, 'register']);
     Route::post('logout', [Customer\Auth\AuthController::class, 'logout']);
     Route::post('refresh', [Customer\Auth\AuthController::class, 'refresh']);
+    Route::apiResource('products', Customer\product\ProductController::class);
+    Route::apiResource('profile', Customer\profile\ProfileController::class);
+
 
 });
 
