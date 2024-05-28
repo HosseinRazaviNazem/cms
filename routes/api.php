@@ -28,6 +28,7 @@ Route::group(['as' => 'customer.', 'prefix' => 'customers'], function () {
     Route::post('logout', [Customer\Auth\AuthController::class, 'logout']);
     Route::post('refresh', [Customer\Auth\AuthController::class, 'refresh']);
     Route::apiResource('products', Customer\product\ProductController::class);
+    Route::apiResource('cart', Customer\cart\CartController::class);
     Route::apiResource('profile', Customer\profile\ProfileController::class);
 
 
