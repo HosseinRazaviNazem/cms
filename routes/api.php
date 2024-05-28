@@ -33,15 +33,18 @@ Route::group(['as' => 'customer.', 'prefix' => 'customers'], function () {
 
 });
 
-Route::group(['as' => 'cart.', 'prefix' => 'cart'], function () {
-    Route::post('add', [CartController::class, 'addItem']);
-//    Route::post('delete', [CartController::class, 'addItem']);
-//    Route::post('update', [CartController::class, 'addItem']);
-});
+//ADMIN ................................
 Route::group(['as' => 'admin.', 'prefix' => 'admins'], function () {
+    //auth........................................
         Route::post('login', [Admin\AuthController::class, 'login']);
         Route::post('register', [Admin\AuthController::class, 'register']);
         Route::post('logout', [Admin\AuthController::class, 'logout']);
         Route::post('refresh', [Admin\AuthController::class, 'refresh']);
+    //Product.....................................
+    Route::apiResource('products', Admin\ProductController::class);
+    //Customer  .....................................
+    Route::apiResource('customers', Admin\CustomerController::class);
+
+
 });
 
