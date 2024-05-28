@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Profile;
 
 use App\Exceptions\customer\CustomerNotFoundException;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\profile\ShowProfileRequest;
 use App\Http\Requests\profile\StoreProfileRequest;
-use App\Http\Resources\profile\ProfileCollection;
-use App\Http\Resources\profile\ProfileResource;
+use App\Http\Resources\admin\profile\ProfileCollection;
+use App\Http\Resources\admin\profile\ProfileResource;
 use App\Models\Customer;
 use App\Models\Profile;
 
