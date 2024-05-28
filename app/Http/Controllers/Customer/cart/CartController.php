@@ -23,4 +23,22 @@ class CartController extends Controller
         }
         return new CartResource($cartItem);
     }
+
+    public function destroy(CartRequest $request)
+    {
+        $validatedData = $request->validated();
+        // Find the resource by its ID
+        $resource = Cart::find('product_id', $validatedData['product_id']);
+
+        if (!$resource) {
+            return response()->json(['message' => 'Resource not found'], 404);
+        }
+
+        // Delete the resource
+        $resource->delete();
+
+        // Return a success response
+        return response()->json(['message' => 'Resource deleted successfully'], 200);
+    }
+
 }
