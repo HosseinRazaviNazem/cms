@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Product;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\admin\StoreProductRequest;
-use App\Http\Resources\admin\ProductResource;
 use App\Http\Resources\admin\ProductCollection;
+use App\Http\Resources\admin\ProductResource;
 use App\Models\Product;
 
 class ProductController extends Controller

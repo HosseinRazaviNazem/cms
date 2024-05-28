@@ -1,9 +1,7 @@
 <?php
 
-use App\Http\Controllers\Customer;
 use App\Http\Controllers\Admin;
-use App\Http\Controllers\Customer\Cart\CartController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Customer;
 use Illuminate\Support\Facades\Route;
 
 //Route::get('/user', function (Request $request) {
@@ -38,14 +36,14 @@ Route::group(['as' => 'customer.', 'prefix' => 'customers'], function () {
 //ADMIN ................................
 Route::group(['as' => 'admin.', 'prefix' => 'admins'], function () {
     //auth........................................
-        Route::post('login', [Admin\AuthController::class, 'login']);
-        Route::post('register', [Admin\AuthController::class, 'register']);
-        Route::post('logout', [Admin\AuthController::class, 'logout']);
-        Route::post('refresh', [Admin\AuthController::class, 'refresh']);
+        Route::post('login', [Admin\Auth\AuthController::class, 'login']);
+        Route::post('register', [Admin\Auth\AuthController::class, 'register']);
+        Route::post('logout', [Admin\Auth\AuthController::class, 'logout']);
+        Route::post('refresh', [Admin\Auth\AuthController::class, 'refresh']);
     //Product.....................................
-    Route::apiResource('products', Admin\ProductController::class);
+    Route::apiResource('products', Admin\Product\ProductController::class);
     //Customer  .....................................
-    Route::apiResource('customers', Admin\CustomerController::class);
+    Route::apiResource('customers', Admin\Customer\CustomerController::class);
 
 
 });

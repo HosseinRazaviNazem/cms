@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\LoginRequest;
 use App\Http\Requests\Admin\RegisterRequest;
 use App\Models\Admin;
-
 use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
@@ -42,7 +41,7 @@ class AuthController extends Controller
         $admin= Admin::create($request->validated());
 
         $token = $this->getGuard()->login($admin);
-      
+
         return response()->json([
             'status' => 'success',
             'message' => ' admin created successfully',
