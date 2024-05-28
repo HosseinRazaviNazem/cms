@@ -1,10 +1,9 @@
 <?php
 
-<<<<<<< Updated upstream:app/Http/Resources/admin/ProductResource.php
 namespace App\Http\Resources\admin;
-=======
+
 namespace App\Http\Resources\Customer\product;
->>>>>>> Stashed changes:app/Http/Resources/Customer/product/ProductResource.php
+
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
