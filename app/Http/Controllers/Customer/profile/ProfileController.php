@@ -6,8 +6,8 @@ use App\Exceptions\customer\CustomerNotFoundException;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\profile\ShowProfileRequest;
 use App\Http\Requests\profile\StoreProfileRequest;
-use App\Http\Resources\profile\ProfileCollection;
-use App\Http\Resources\profile\ProfileResource;
+use App\Http\Resources\Customer\profile\ProfileCollection;
+use App\Http\Resources\Customer\profile\ProfileResource;
 use App\Models\Customer;
 use App\Models\Profile;
 

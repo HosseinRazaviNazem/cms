@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Resources\profile;
+namespace App\Http\Resources\Customer\profile;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -30,6 +30,5 @@ class ProfileResource extends JsonResource
             'updated_at' => $this->updated_at,
         ];
 
-        return parent::toArray($request);
     }
 }
