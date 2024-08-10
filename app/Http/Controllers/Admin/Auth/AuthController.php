@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    public function login( LoginRequest $request)
+    public function login( \App\Http\Requests\Admin\Auth\LoginRequest $request)
     {
         $admin = $request->validated();
 
@@ -36,7 +36,7 @@ class AuthController extends Controller
         ]);
     }
 
-    public function register(RegisterRequest $request)
+    public function register(\App\Http\Requests\Admin\Auth\RegisterRequest $request)
     {
         $admin= Admin::create($request->validated());
 
