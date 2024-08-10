@@ -3,14 +3,14 @@
 namespace App\Http\Controllers\Admin\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\LoginRequest;
-use App\Http\Requests\Admin\RegisterRequest;
+use App\Http\Requests\Admin\Auth\LoginRequest;
+use App\Http\Requests\Admin\Auth\RegisterRequest;
 use App\Models\Admin;
 use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    public function login( \App\Http\Requests\Admin\Auth\LoginRequest $request)
+    public function login(LoginRequest $request)
     {
         $admin = $request->validated();
 
@@ -36,7 +36,7 @@ class AuthController extends Controller
         ]);
     }
 
-    public function register(\App\Http\Requests\Admin\Auth\RegisterRequest $request)
+    public function register(RegisterRequest $request)
     {
         $admin= Admin::create($request->validated());
 
